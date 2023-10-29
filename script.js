@@ -6,7 +6,29 @@ var currentHour = dayjs().format('k');
       var currentDate = dayjs().format('dddd, MMMM D, YYYY');
       $("#currentDay").text(currentDate);
     });
+    
+    $(".time-block").each(function() {
+
+      var blockHour = parseInt($(this).attr("id").replace("hour-", ""));
+    
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+      } else if (blockHour == currentHour) {
+        $(this).addClass("present");
+      } else {
+        $(this).addClass("future");
+      }
+
+      var timeBlockId = $(this).attr('id');
+      var savedInput = localStorage.getItem(timeBlockId);
       
+      if (savedInput === null) {
+        savedInput = "";
+        localStorage.setItem(timeBlockId, savedInput);
+      }   
+      $(this).find('.description').val(savedInput);
+    });
+
   });
     
   // TODO: Add a listener for click events on the save button. This code should
