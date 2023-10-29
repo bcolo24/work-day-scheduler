@@ -29,6 +29,13 @@ var currentHour = dayjs().format('k');
       $(this).find('.description').val(savedInput);
     });
 
+    $('.saveBtn').on('click', function() {
+      var timeBlockId = $(this).closest('.time-block').attr('id');
+
+      var userInput = $(this).siblings('.description').val();
+
+      localStorage.setItem(timeBlockId, userInput);
+    });
   });
     
   // TODO: Add a listener for click events on the save button. This code should
