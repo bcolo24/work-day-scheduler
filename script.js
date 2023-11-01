@@ -13,8 +13,11 @@
       if (blockHour < currentHour) {
         $(this).addClass("past");
       } else if (blockHour == currentHour) {
+        $(this).removeClass("past");
         $(this).addClass("present");
       } else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
         $(this).addClass("future");
       }
     
